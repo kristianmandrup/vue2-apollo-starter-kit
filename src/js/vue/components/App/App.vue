@@ -44,17 +44,17 @@ export default {
     this.$nextTick(() => {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
-      if (token && userId) {
-        // If we are logged in subscribe to the user and render the app.
-        this.subscribeToUser(userId);
-      } else {
-        // We are not logged in so stop loading and render the landing page.
-        this.loading: false,
-      }
+
+      // If we are logged in subscribe to the user and render the app.
+      // We are not logged in so stop loading and render the landing page.
+      return token && userId ? this.subscribeToUser(userId) : this.notLoading()  
     })
   },
 
   methods: {
+    notLoading() {
+      this.loading = false
+    },
     createUser() {
       // We save the user input in case of an error
       // const newUser = this.newUser;
@@ -66,30 +66,25 @@ export default {
         username: this.username, 
         password: this.password
       }))
-        .then((data) => {
-          // Result
-          console.log(data);
-        }).catch((error) => {
-          // Error
-          console.error(error);
-          // We restore the initial user input
-          // this.newUser = newUser;
-        });
+      .then(data => console.log(data))
+      .catch(error => console.error(error))
     },     
 
-    onSubscribeErrors(result) {
-      const unauthed = result.errors.reduce((acc, err) => (
+    unauthed(result) {
+      return result.errors.reduce((acc, err) => (
         acc || err.status === 401
       ), false);
+    },
 
-      const authenticated = !unauthed 
-      
-      if (!authenticated) return
+    onSubscribeErrors(result) {
+      const authenticated = !this.unauthed(result)       
+      // ignore errors if already authenticated
+      if (authenticated) return
 
       localStorage.clear();
       // update component state
       this.user = result.data.getUser;
-      this.loading = false
+      this.notLoading()
     }
 
     onSubscribeData(result) {
@@ -98,7 +93,7 @@ export default {
 
       // update component state
       this.user = getUser,
-      this.loading = false,
+      this.notLoading()
 
       // redirect to home
       router.push({name: 'home'});      
@@ -116,19 +111,19 @@ export default {
       })
 
       const subscription = observable.subscribe({
-        next(result) => {
+        next(result) {
           let handler = result && result.errors ? this.onSubscribeErrors : this.onSubscribeData
           handler(result) 
         },
         error(error) {
-          console.log(`Error subscribing to user: ${error.toString()}`);
-          this.loading = false,
+          console.log(`Error subscribing to user: ${error.toString()}`)
+          this.notLoading()
         }, 
         // Network error, etc.
         complete() {
-          console.log(`Subscription complete`);
-        },
-      });
+          console.log(`Subscription complete`)
+        }
+      })
 
       // update component state
       this.userSubscription = subscription,
