@@ -70,23 +70,10 @@ export const createUser = (ctx) => {
 }    
 
 export const LoginWithData = graphql(queries.LoginUserMutation, {
-  props: ({ mutate }) => ({
-    login: (data) => mutate({
-      variables: {
-        data,
-      },
-    }),
-  })
 })
 
 
 export const RegisterWithData = graphql(queries.CreateUserMutation, {
-  props: ({ mutate }) => ({
-    register: (data) => mutate({
-      variables: {
-        data,
-      },
-    }),
-  }),
-})(Register);
-export default RegisterWithData;
+  
+})
+

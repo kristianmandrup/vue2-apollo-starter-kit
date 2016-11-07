@@ -133,7 +133,28 @@ subscribeToUser(id) {
 }
 ```
 
-#### Login component
+#### Register user component
+
+*You need to first register in order to login!*
+
+Contains the following data, bound to the form dialog.
+
+```js
+{
+  showModal: false, // show modal or not
+  registerEmail: undefined, // user email
+  registerPassword: undefined, // user password
+  errors: undefined // registration error
+}
+```
+
+```js
+
+
+```
+
+
+#### Login user component
 
 Contains an apollo mutation method to perform a `loginWithData`
 

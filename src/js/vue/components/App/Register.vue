@@ -39,6 +39,8 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import config from './../../../config';
+import { * as mutations } from './mutations'
+import router from '../../router';
 
 export default {
   props: [],
@@ -51,21 +53,32 @@ export default {
     }
   },
   methods: {
+    // open close modal with registration form
     close() {
-      this.setState({ showModal: false });
+      this.showModal = false
     },
     open() {
-      this.setState({ showModal: true });
+      this.showModal = true
     },
+
+    register (data) { 
+      return this.$apollo.mutate(mutations.registerUser(data)
+    },
+
     registerUser() {
+      // register using Apollo GraphQL mutation on User model in data store
       this.register({
         username: this.registerEmail,
         password: this.registerPassword
       }).then(({ data }) => {
         if (!data.errors) {
+
+          // save token, id in local storage
           localStorage.setItem('token', data.createUser.token);
           localStorage.setItem('userId', data.createUser.changedUser.id);
-          hashHistory.push('/home');
+
+          // redirect to home
+          router.push({name: 'home'});
         } else {
           this.error = data.errors
         }
@@ -73,6 +86,7 @@ export default {
         this.error = error;
       });
     },
+    
     handleRegisterEmailChange(e) {
       this.registerEmail = e.target.value;
     },
