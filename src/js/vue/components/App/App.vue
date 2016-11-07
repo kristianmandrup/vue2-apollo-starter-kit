@@ -14,6 +14,8 @@ import { createFragment } from 'apollo-client';
 import config from '../../../config';
 import router from '../../router';
 
+import { FragmentDoc } from './queries'
+
 // load components
 import Header from './Header';
 import Footer from './Footer';
@@ -73,9 +75,36 @@ export default {
           // We restore the initial user input
           // this.newUser = newUser;
         });
-    },        
+    },     
+
+    onSubscribeErrors(result) {
+      const unauthed = result.errors.reduce((acc, err) => (
+        acc || err.status === 401
+      ), false);
+
+      const authenticated = !unauthed 
+      
+      if (!authenticated) return
+
+      localStorage.clear();
+      // update component state
+      this.user = result.data.getUser;
+      this.loading = false
+    }
+
+    onSubscribeData(result) {
+      let getUser = result.data.getUser
+      localStorage.setItem('currentUsername', getUser.username);
+
+      // update component state
+      this.user = getUser,
+      this.loading = false,
+
+      // redirect to home
+      router.push({name: 'home'});      
+    },
+
     subscribeToUser(id) {
-      const that = this;
       const observable = client.watchQuery({
         query: userQuery,
         fragments: createFragment(FragmentDoc),
@@ -87,32 +116,13 @@ export default {
       })
 
       const subscription = observable.subscribe({
-        next(result) {
-          if (result && result.errors) {
-            const unauthed = result.errors.reduce((acc, err) => (
-              acc || err.status === 401
-            ), false);
-            if (unauthed) {
-              localStorage.clear();
-
-              // update component state
-              that.user = result.data.getUser;
-              that.loading = false
-            }
-          } else {
-            localStorage.setItem('currentUsername', result.data.getUser.username);
-
-            // update component state
-            that.user = result.data.getUser,
-            that.loading = false,
-
-            // redirect to home
-            router.push({name: 'home'});
-          }
+        next(result) => {
+          let handler = result && result.errors ? this.onSubscribeErrors : this.onSubscribeData
+          handler(result) 
         },
         error(error) {
           console.log(`Error subscribing to user: ${error.toString()}`);
-          that.loading = false,
+          this.loading = false,
         }, 
         // Network error, etc.
         complete() {

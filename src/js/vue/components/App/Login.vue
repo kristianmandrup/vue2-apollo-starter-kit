@@ -76,16 +76,16 @@ export default {
       this.login({
         username: this.loginEmail,
         password: this.loginPassword
-      }).then(({ data }) => {
-        if (!data.errors) {
-          localStorage.setItem('token', data.loginUser.token);
-          localStorage.setItem('userId', data.loginUser.id);
-          router.push({name: 'home'});
-        } else {
-          this.error = data.errors;
+      }).then((data) => {
+        if (data.errors) {
+          this.errors = data.errors;
+          return
         }
+        localStorage.setItem('token', data.loginUser.token);
+        localStorage.setItem('userId', data.loginUser.id);
+        router.push({name: 'home'});
       }).catch((error) => {
-        this.error = error
+        this.errors = [error]
       });
     }
   }

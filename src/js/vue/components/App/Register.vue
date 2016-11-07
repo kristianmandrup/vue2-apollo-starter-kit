@@ -70,18 +70,17 @@ export default {
       this.register({
         username: this.registerEmail,
         password: this.registerPassword
-      }).then(({ data }) => {
-        if (!data.errors) {
-
-          // save token, id in local storage
-          localStorage.setItem('token', data.createUser.token);
-          localStorage.setItem('userId', data.createUser.changedUser.id);
-
-          // redirect to home
-          router.push({name: 'home'});
-        } else {
+      }).then((data) => {
+        if (data.errors) {
           this.error = data.errors
+          return
         }
+        // save token, id in local storage
+        localStorage.setItem('token', data.createUser.token);
+        localStorage.setItem('userId', data.createUser.changedUser.id);
+
+        // redirect to home
+        router.push({name: 'home'});
       }).catch((error) => {
         this.error = error;
       });
