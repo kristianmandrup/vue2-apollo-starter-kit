@@ -60,6 +60,55 @@ The main points of interest are the `vue-apollo` integrations and GraphQL querie
 - [Apollo mutate API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.mutate)
 - [Apollo observable query](http://dev.apollodata.com/core/apollo-client-api.html#ObservableQuery)
 - [vue-apollo mutations](https://github.com/Akryum/vue-apollo#mutations)
+- [introducing vue apollo blog post](https://dev-blog.apollodata.com/use-apollo-in-your-vuejs-app-89812429d8b2#.965u4wz6w)
+
+The `vue-apollo` author recommends defining the apollo queries directly on the component using the special `apollo` key: 
+
+```js
+  // Apollo GraphQL
+  apollo: {
+    // Local state 'posts' data will be updated
+    // by the GraphQL query result
+    posts: {
+      // GraphQL query
+      query: postsQuery,
+      // Will update the 'loading' attribute
+      // +1 when a new query is loading
+      // -1 when a query is completed
+      loadingKey: 'loading',
+    },
+  },
+```  
+
+Here is a good mutation example:
+
+```js
+export default {
+  // Attribute
+  props: {
+    // Post id passed down to this component
+    postId: {
+      type: Number,
+      required: true,
+    },
+  },
+  methods: {
+    upvote() {
+      // Mutation
+      this.$apollo.mutate({
+        mutation: upvoteMutation,
+        variables: {
+          postId: this.postId,
+        },
+      }).then(data => {
+        console.log('Done upvoting.');
+      });
+    },
+  },
+};
+```
+
+Please refactor the current Vue2 components to follow best practices and work correctly!  
 
 #### Apollo GraphQL mutations 
 
