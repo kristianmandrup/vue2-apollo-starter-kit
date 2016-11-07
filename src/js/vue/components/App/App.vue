@@ -8,7 +8,7 @@
 
 <script>
 // import { graphql } from 'vue-apollo';  ???
-import gql from 'graphql-tag';
+
 import client from '../../../apollo';
 import { createFragment } from 'apollo-client';
 import config from '../../../config';

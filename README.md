@@ -62,6 +62,7 @@ The main points of interest are the `vue-apollo` integrations and GraphQL querie
 - [GraphiQL](https://medium.com/the-graphqlhub/graphiql-graphql-s-killer-app-9896242b2125#.93aza2s7h)
 
 *Apollo GraphQL client*
+- [put GraphQL data in your UI](https://www.youtube.com/watch?v=u1E0CbGeICo)
 - [Apollo mutate API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.mutate)
 - [Apollo observable query](http://dev.apollodata.com/core/apollo-client-api.html#ObservableQuery)
 - [vue-apollo mutations](https://github.com/Akryum/vue-apollo#mutations)

@@ -1,3 +1,5 @@
+import gql from 'graphql-tag';
+
 const FragmentDoc = gql`
 fragment UserFragment on User {
   id

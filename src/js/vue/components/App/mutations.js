@@ -1,3 +1,4 @@
+import gql from 'graphql-tag';
 import graphql from 'graphql'
 
 // See https://www.npmjs.com/package/graphql
@@ -74,6 +75,6 @@ export const LoginWithData = graphql(queries.LoginUserMutation, {
 
 
 export const RegisterWithData = graphql(queries.CreateUserMutation, {
-  
+
 })
 
