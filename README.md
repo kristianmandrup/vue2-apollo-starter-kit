@@ -58,6 +58,8 @@ The main points of interest are the `vue-apollo` integrations and GraphQL querie
 
 *GraphQL*
 - [GraphQL first: how to build modern apps](https://dev-blog.apollodata.com/graphql-first-a-better-way-to-build-modern-apps-b5a04f7121a0#.j4jqd5y63)
+- [redux dev tools - debug queries in chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [GraphiQL](https://medium.com/the-graphqlhub/graphiql-graphql-s-killer-app-9896242b2125#.93aza2s7h)
 
 *Apollo GraphQL client*
 - [Apollo mutate API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.mutate)
