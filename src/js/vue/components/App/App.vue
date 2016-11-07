@@ -1,8 +1,6 @@
 <template>
   <div>
     <header />
-    <hero />
-    <description />
     <router-view />
     <footer />
   </div>
@@ -14,7 +12,7 @@ import gql from 'graphql-tag';
 import client from '../../../apollo';
 import { createFragment } from 'apollo-client';
 import config from '../../../config';
-import { hashHistory } from 'react-router';
+import router from '../../router';
 
 // load components
 import Header from './Header';
@@ -108,7 +106,8 @@ export default {
             that.user = result.data.getUser,
             that.loading = false,
 
-            hashHistory.push('/home');
+            // redirect to home
+            router.push({name: 'home'});
           }
         },
         error(error) {

@@ -25,10 +25,10 @@
             </div>
           </form-group>
         </Form>
-        <div style={styles.errors}>{this.state.errors}</div>
+        <div class="errors">{{ errors }}</div>
       </modal-body>
       <modal-footer>
-        <button class="primary" type="submit" onClick={this.loginUser}>Login</button>
+        <button class="primary" type="submit" @onClick="loginUser()">Login</button>
         <button @onClick="close()">Close</button>
       </modal-footer>
     </modal>
@@ -37,6 +37,7 @@
 <script>
 import config from './../../../config';
 import { * as mutations } from './mutations'
+import router from '../../router';
 
 export default {
   props: [],
@@ -81,10 +82,10 @@ export default {
           localStorage.setItem('userId', data.loginUser.id);
           router.push({name: 'home'});
         } else {
-          that.error = data.errors;
+          this.error = data.errors;
         }
       }).catch((error) => {
-        that.error = error
+        this.error = error
       });
     }
   }
