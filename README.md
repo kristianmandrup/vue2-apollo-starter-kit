@@ -108,7 +108,9 @@ export default {
 };
 ```
 
-Please refactor the current Vue2 components to follow best practices and work correctly!  
+Please refactor the current Vue2 components to follow best practices and work correctly! 
+
+Also have a look at: [vue-apollo: hello world example](https://github.com/Akryum/frontpage-vue-app) 
 
 #### Apollo GraphQL mutations 
 
