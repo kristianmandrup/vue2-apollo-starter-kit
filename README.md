@@ -56,11 +56,19 @@ The main points of interest are the `vue-apollo` integrations and GraphQL querie
 *vue-router*
 - [vue-router](https://router.vuejs.org/en/essentials/getting-started.html)
 
+*GraphQL*
+- [GraphQL first: how to build modern apps](https://dev-blog.apollodata.com/graphql-first-a-better-way-to-build-modern-apps-b5a04f7121a0#.j4jqd5y63)
+
 *Apollo GraphQL client*
 - [Apollo mutate API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.mutate)
 - [Apollo observable query](http://dev.apollodata.com/core/apollo-client-api.html#ObservableQuery)
 - [vue-apollo mutations](https://github.com/Akryum/vue-apollo#mutations)
+- [graphql subscriptions](https://dev-blog.apollodata.com/a-proposal-for-graphql-subscriptions-1d89b1934c18#.rw9v6x215)
 - [introducing vue apollo blog post](https://dev-blog.apollodata.com/use-apollo-in-your-vuejs-app-89812429d8b2#.965u4wz6w)
+
+*Extra tools*
+- [optics analytics](http://www.apollodata.com/optics)
+ 
 
 The `vue-apollo` author recommends defining the apollo queries directly on the component using the special `apollo` key: 
 
