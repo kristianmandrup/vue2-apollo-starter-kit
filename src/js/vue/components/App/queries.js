@@ -34,9 +34,23 @@ const LoginUserMutation = gql `
   }
 `;
 
+const CreateUserMutation = gql `
+  mutation CreateUserMutation($data: _CreateUserInput!) {
+    createUser (input: $data) {
+      token
+      changedUser {
+        id
+        username
+      }
+    }
+  }
+`;
+
 export default {
   FragmentDoc,
   userQuery,
   createUserQuery,
+
+  CreateUserMutation,
   LoginUserMutation
 }

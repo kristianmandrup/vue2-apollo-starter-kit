@@ -1,5 +1,7 @@
 <template>
-  <p class="footer">Made with <i name='heart'/> from the Scaphold team</p>
+  <md-bottom-bar>
+    <md-bottom-bar-item>Made with <i name='heart'/> from the Scaphold team</md-bottom-bar-item>
+  </md-bottom-bar>
 </template>
 <script>
 export default {

@@ -25,18 +25,41 @@ Fork this boilerplate code to get started with GraphQL, and Apollo with either:
 
 2) Set the environment variable ```process.env.NODE_ENV = 'production'``` to let server.js know to run the code in the lib/ directory.
 
+*scaphold.io*
+- [scaphold.io quickstart](https://scaphold.io/docs/#quick-start-tutorial)
+- [scaphold.io slack channel](https://scaphold.slack.com)
+
 ## Status
+
+- React *working*
+- Vue 2 *Work in progress (WIP)*
 
 ### React
 
-Should work out of the box. Src code can be found in `src/react` folder
+Works out of the box. Source code can be found in `src/js/react` folder
 
 ### Vue2
 
-Not quite working yet. Src code can be found in `src/vue` folder.
+Not quite working yet. Src code can be found in `src/js/vue` folder.
 We have not tried to port the `Description` or `Hero` components as they are static and not interesting.
 
 The main points of interest are the `vue-apollo` integrations and GraphQL queries.
+
+*Vue 2*
+- [vue 2 API](https://vuejs.org/v2/api/)
+- [vue 2 guide](https://vuejs.org/v2/guide/)
+
+*vue-material*
+- [repo](https://github.com/marcosmoura/vue-material) and [docs](https://marcosmoura.github.io/vue-material/#/)
+- [vue-material getting started](https://marcosmoura.github.io/vue-material/#/getting-started)
+
+*vue-router*
+- [vue-router](https://router.vuejs.org/en/essentials/getting-started.html)
+
+*Apollo GraphQL client*
+- [Apollo mutate API](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.mutate)
+- [Apollo observable query](http://dev.apollodata.com/core/apollo-client-api.html#ObservableQuery)
+- [vue-apollo mutations](https://github.com/Akryum/vue-apollo#mutations)
 
 #### Apollo GraphQL mutations 
 

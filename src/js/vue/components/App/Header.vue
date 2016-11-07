@@ -1,17 +1,19 @@
 <template>
-  <navbar style={styles.navbar}>
-    <navbar-header>
-      <navbar-brand>
+  <nav class="top-bar">
+    <md-toolbar class="header">
+      <md-button class="brand">
         <router-link :to="{ name: 'root' }">Scaphold</router-link>
-      </navbar-brand>
-    </navbar-header>
-    <nav class="right">
-      <router-link :to="{ name: 'home' }">Home</router-link>
-      <router-link :to="{ name: 'graphiql' }">GraphiQL</router-link>
-      <login></login>
-      <register></register>
-    </nav>
-  </navbar>
+      </md-button>
+    </md-toolbar>
+    <section class="right">
+      <md-tabs>
+        <md-tab><router-link :to="{ name: 'home' }">Home</router-link></md-tab>
+        <md-tab><router-link :to="{ name: 'graphiql' }">GraphiQL</router-link></md-tab>
+        <md-tab><login></login></md-tab>
+        <md-tab><register></register></md-tab>
+      <md-tabs>
+    </section>
+  </nav>
 <template>
 <script>
 // load components
@@ -31,7 +33,7 @@ export default {
     return {
       showModal: false
     }
-  }
+  } 
 }
 </script>
 <style>
