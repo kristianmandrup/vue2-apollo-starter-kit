@@ -4,7 +4,7 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import VueApollo from 'vue-apollo';
-import apollo from './apollo' // apollo client plugin for vue
+import apollo from '../apollo' // apollo client plugin for vue
 import router from './router'
 
 // https://www.npmjs.com/package/vue-awesome
