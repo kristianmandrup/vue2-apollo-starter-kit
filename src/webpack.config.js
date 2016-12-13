@@ -1,15 +1,14 @@
 let StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
-let ExtractTextPlugin = require('extract-text-webpack-plugin')
+// let ExtractTextPlugin = require('extract-text-webpack-plugin')
 let webpack = require('webpack')
 
 const locals = {
-    paths: [
-        '/'
-    ]
-};
+  paths: [
+    '/'
+  ]
+}
 
 module.exports = ({
-
   entry: {
     'main': './server.js'
   },
@@ -21,9 +20,9 @@ module.exports = ({
   ],
 
   output: {
-    filename: 'server.js', //sets our output filename to index.js
-    path: 'dist', //sets our output directory to dist/
-    libraryTarget: 'umd' //nodejs and StaticSiteGeneratorWebpackPlugin require UMD or CommonJS
+    filename: 'server.js', // sets our output filename to index.js
+    path: 'dist', // sets our output directory to dist/
+    libraryTarget: 'umd' // nodejs and StaticSiteGeneratorWebpackPlugin require UMD or CommonJS
   },
 
   module: {
@@ -49,4 +48,4 @@ module.exports = ({
 
   watch: true
 
-});
+})
