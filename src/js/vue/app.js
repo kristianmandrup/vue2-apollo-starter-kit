@@ -4,6 +4,9 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 // import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import VueApollo from 'vue-apollo'
+import Router from 'vue-router'
+Vue.use(Router)
+
 import apollo from '../apollo' // apollo client plugin for vue
 import router from './router'
 
@@ -42,6 +45,7 @@ Vue.material.theme.registerAll({
   }
 })
 
-new Vue({
-  router
-}).$mount('#root')
+import App from './components/App/App.vue'
+App.router = router
+
+new Vue(App).$mount('#root')
