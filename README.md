@@ -1,5 +1,7 @@
 # React/Vue2 Apollo boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/vue2-apollo-starter-kit.svg)](https://greenkeeper.io/)
+
 *Important* This repo doesn't (yet) work!
 
 Please try [vue2-apollo-scaphold](https://github.com/kristianmandrup/vue2-apollo-scaphold) instead!
